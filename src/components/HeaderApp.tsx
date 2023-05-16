@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Header, Button } from "@mantine/core";
+import { Button } from "@mantine/core";
+import "./HeaderApp.css";
 
 export default function HeaderApp() {
   const navigate = useNavigate();
@@ -10,10 +11,10 @@ export default function HeaderApp() {
 
   return (
     <>
-      <Header height="3rem" className="headerApp">
+      <header className="headerApp">
         <h2>GraphiQL - Team #6</h2>
-        <Button onClick={onClickSignInUp}>Sigh In / Sign Up</Button>
-      </Header>
+        <Button onClick={onClickSignInUp} className="headerSignButton">Sigh In / Sign Up</Button>
+      </header>
     </>
   );
 }
