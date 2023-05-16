@@ -1,0 +1,22 @@
+.headerApp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    padding: 1rem 2rem;
+    width: 100%;
+    border-bottom: 0.0625rem solid #e9ecef;
+}
+
+.headerApp>h2 {
+    margin: 0;
+}
+
+@media  screen and (max-width: 460px) {
+    .headerApp {
+        flex-direction: column;
+    }
+    .headerSignButton {
+        margin-top: 0.7rem;
+    }
+}

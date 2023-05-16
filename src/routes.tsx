@@ -1,6 +1,6 @@
 import MainPage from './pages/Main';
 import WelcomePage from './pages/Welcome';
-import SignPage from './pages/Sign';
+import SignPage from './pages/SignInUp';
 
 const routes = [
   {
