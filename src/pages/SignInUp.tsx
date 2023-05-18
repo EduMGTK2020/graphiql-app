@@ -86,7 +86,7 @@ export default function SignInUp() {
         form.values.password
       )
         .then((userCredential) => {
-          console.log("create user");
+          console.log("create user - ", userCredential);
           // state.isAuth = true;
           // state.user = userCredential.user.email!;
         })
@@ -99,7 +99,6 @@ export default function SignInUp() {
           });
         });
     }
-    // signUp(emailRef.current!.value, passwordRef.current!.value);
   };
 
   useEffect(() => {
