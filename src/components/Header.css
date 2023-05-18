@@ -12,10 +12,11 @@
 
 .header_buttons {
     display: flex;
+    align-items: center;
 }
 
 .header_user {
-    padding: 0.35rem 2rem;
+    padding: 0.35rem 2rem 0 0.35rem;
     font-weight: 700;
 }
 
