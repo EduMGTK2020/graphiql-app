@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 
-import { Button } from "@mantine/core";
+import { Button, Avatar } from "@mantine/core";
 import "./Header.css";
 
 export default function HeaderApp() {
@@ -33,6 +33,7 @@ export default function HeaderApp() {
 
           {user && !loading && (
             <>
+              <Avatar radius="xl" />
               <div className="header_user">{user.email}</div>
               <Button onClick={onClickSignOut} className="header_sign_button">
                 Sigh Out
