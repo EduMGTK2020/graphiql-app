@@ -1,0 +1,10 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+h4 {
+    padding: 2rem;
+}

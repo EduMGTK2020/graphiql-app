@@ -1,9 +1,9 @@
-import "./FooterApp.css";
+import "./Footer.css";
 
-export default function FooterApp() {
+export default function Footer() {
   return (
     <>
-      <footer className="footerApp">
+      <footer className="footer_app">
         <h2>Footer</h2>
         <p>
           Link to authors github, app year, course logo with link to the course
