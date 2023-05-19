@@ -1,13 +1,14 @@
+import { useTranslation } from "react-i18next";
 import "./Footer.css";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <>
       <footer className="footer_app">
-        <h2>Footer</h2>
-        <p>
-          Link to authors github, app year, course logo with link to the course
-        </p>
+        <h2>{t("footerTitle")}</h2>
+        <p>{t("footerInfo")}</p>
       </footer>
     </>
   );

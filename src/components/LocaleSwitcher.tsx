@@ -1,13 +1,22 @@
 import { useState } from "react";
 import { SegmentedControl, Center, Box } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 
 export default function LocaleSwitcher() {
   const [locale, setLocale] = useState("en");
+  const { i18n } = useTranslation();
 
   const toggleLocale = () => {
-    if (locale == "en") setLocale("ru");
-    else setLocale("en");
+    if (locale == "en") {
+      setLocale("ru");
+      i18n.changeLanguage("ru");
+    } else {
+      setLocale("en");
+      i18n.changeLanguage("en");
+    }
   };
+
+  const colorActive = "#228be6";
 
   return (
     <>
@@ -19,7 +28,7 @@ export default function LocaleSwitcher() {
             value: "en",
             label: (
               <Center>
-                <Box sx={{ color: locale == "en" ? "#228be6" : "" }}>En</Box>
+                <Box sx={{ color: locale == "en" ? colorActive : "" }}>En</Box>
               </Center>
             ),
           },
@@ -27,7 +36,7 @@ export default function LocaleSwitcher() {
             value: "ru",
             label: (
               <Center>
-                <Box sx={{ color: locale == "ru" ? "#228be6" : "" }}>Ru</Box>
+                <Box sx={{ color: locale == "ru" ? colorActive : "" }}>Рус</Box>
               </Center>
             ),
           },

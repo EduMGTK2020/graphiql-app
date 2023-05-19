@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslation } from "react-i18next";
 
 import Loader from "../components/Loader";
 import "../pages/Main.css";
 
 export default function Main() {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
@@ -21,7 +24,8 @@ export default function Main() {
     return (
       <>
         <div className="loader">
-          <Loader /> <h4>Check auth...</h4>
+          <Loader />
+          <h4>{t('checkAuth')}</h4>
         </div>
       </>
     );
@@ -30,10 +34,10 @@ export default function Main() {
   return (
     <>
       <div className="main">
-        <h1>Main page</h1>
+        <h1>{t('mainTitle')}</h1>
         <p>
-          Section - editor, variables, headers (for query), documentation,
-          response
+          {t('mainInfo')}
+          div
         </p>
       </div>
     </>

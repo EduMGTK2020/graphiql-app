@@ -1,5 +1,6 @@
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
+import { currentTime } from "../utils";
 import Loader from "../components/Loader";
 
 import {
@@ -20,34 +21,35 @@ import {
 import "./SignInUp.css";
 
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslation } from "react-i18next";
+import { e } from "../auth/firebaseErrorTrans";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function SignInUp() {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
 
   const onSignIn = async () => {
-    console.log("signIn", form.values);
-    if (isValidForm()) {
+    if (isFormValid()) {
       signInWithEmailAndPassword(auth, form.values.email, form.values.password)
         .then((userCredential) => {
-          // state.user = userCredential.user.email!;
-          // state.isAuth = true;
           notifications.show({
-            title: "User login",
-            message: userCredential.user.email,
+            title: t("userLogin"),
+            message: currentTime() + " - " + userCredential.user.email,
             autoClose: true,
             color: "green",
           });
         })
         .catch((error) => {
           notifications.show({
-            title: error.code,
-            message: error.message,
+            title: t("errorFirebaseAuth"),
+            message: currentTime() + " - " + e(error.code),
             autoClose: 20000,
             color: "red",
           });
@@ -55,27 +57,30 @@ export default function SignInUp() {
     }
   };
 
-  const isValidForm = () => {
+  const isFormValid = () => {
     return Object.keys(form.errors).length === 0;
   };
 
   const onSignUp = () => {
     notifications.clean();
-    if (isValidForm()) {
+    if (isFormValid()) {
       createUserWithEmailAndPassword(
         auth,
         form.values.email,
         form.values.password
       )
         .then((userCredential) => {
-          console.log("create user - ", userCredential);
-          // state.isAuth = true;
-          // state.user = userCredential.user.email!;
+          notifications.show({
+            title: t("userCreate"),
+            message: currentTime() + " - " + userCredential.user.email,
+            autoClose: true,
+            color: "green",
+          });
         })
         .catch((error) => {
           notifications.show({
-            title: error.code,
-            message: error.message,
+            title: t("errorFirebaseAuth"),
+            message:  currentTime() + " - " + e(error.code),
             autoClose: 20000,
             color: "red",
           });
@@ -98,8 +103,9 @@ export default function SignInUp() {
           value
         )
           ? null
-          : "Invalid password - 8-20 symbols, at least one letter, one digit, one special character",
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+          : t("errorInvalidPassword"),
+      email: (value) =>
+        /^\S+@\S+$/.test(value) ? null : t("errorInvalidEmail"),
     },
   });
 
@@ -107,26 +113,25 @@ export default function SignInUp() {
     return (
       <>
         <div className="loader">
-          <Loader /> <h4>Check auth...</h4>
+          <Loader /> <h4>{t("checkAuth")}</h4>
         </div>
       </>
     );
   }
-  
+
   return (
     <div className="sign_in_up">
-      {/* {loading} - {state.isAuth} - {state.user} - {user?.email} */}
       <Box className="sign_in_up_inputs">
         <form onSubmit={form.onSubmit(() => undefined)}>
           <Flex direction="column">
             <TextInput
-              label="Email"
-              placeholder="email"
+              label={t("labelEmail")}
+              placeholder={''+t("labelEmail")}
               {...form.getInputProps("email")}
             />
             <PasswordInput
-              label="Password"
-              placeholder="password"
+              label={t("labelPassword")}
+              placeholder={''+t("labelPassword")}
               {...form.getInputProps("password")}
             />
           </Flex>
@@ -137,7 +142,7 @@ export default function SignInUp() {
               type="submit"
               onClick={onSignIn}
             >
-              Sign In
+              {t("labelSignIn")}
             </Button>
             <Button
               className="sign_in_up_button"
@@ -145,7 +150,7 @@ export default function SignInUp() {
               onClick={onSignUp}
               variant="outline"
             >
-              Sign Up
+              {t("labelSignUp")}
             </Button>
           </Flex>
         </form>
