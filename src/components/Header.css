@@ -38,6 +38,10 @@
         flex-direction: column;
     }
     .header_sign_button {
-        margin-top: 0.7rem;
+        margin-top: 0.5rem;
+    }
+    .header_buttons {
+        margin-top: 0.5rem;
+        flex-direction: column;
     }
 }

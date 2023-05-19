@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslation } from "react-i18next";
 
+import { Button } from "@mantine/core";
 import Loader from "../components/Loader";
 import "../pages/Main.css";
 
@@ -25,7 +26,7 @@ export default function Main() {
       <>
         <div className="loader">
           <Loader />
-          <h4>{t('checkAuth')}</h4>
+          <h4>{t("checkAuth")}</h4>
         </div>
       </>
     );
@@ -34,11 +35,27 @@ export default function Main() {
   return (
     <>
       <div className="main">
-        <h1>{t('mainTitle')}</h1>
-        <p>
-          {t('mainInfo')}
-          div
-        </p>
+        <div className="main_docs">
+          <div className="main_header">
+            <div className="main_title">Documentation</div>
+          </div>
+        </div>
+        <div className="main_request">
+          <div className="main_query">
+            <div className="main_header">
+              <div className="main_title">Query</div>
+              <Button>Run</Button>
+            </div>
+          </div>
+          <textarea></textarea>
+          <div className="main_variables">Variables</div>
+          <div className="main_headers">Headers</div>
+        </div>
+        <div className="main_response">
+          <div className="main_header">
+            <div className="main_title">Response</div>
+          </div>
+        </div>
       </div>
     </>
   );
