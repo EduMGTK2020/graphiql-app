@@ -1,6 +1,6 @@
 .welcome {
     display: flex;
-    /* height: 100vh; */
+    flex-direction: column;
     place-items: center;
     justify-content: center;
     flex-grow: 1;

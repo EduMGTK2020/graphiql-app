@@ -40,8 +40,8 @@ export default function SignInUp() {
           notifications.show({
             title: "User login",
             message: userCredential.user.email,
-            autoClose: 20000,
-            color: "gree",
+            autoClose: true,
+            color: "green",
           });
         })
         .catch((error) => {
@@ -53,24 +53,6 @@ export default function SignInUp() {
           });
         });
     }
-    // signInWithEmailAndPassword(
-    //   auth,
-    //   emailRef.current!.value,
-    //   passwordRef.current!.value
-    // )
-    //   .then((userCredential) => {
-    //     state.user = userCredential.user.email!;
-    //     state.isAuth = true;
-    //   })
-    //   .catch((error) => {
-    //     // const state = useContext(AppContext);
-    //     state.error = error;
-    //     // console.log(error);
-    //     // const errorCode = error.code;
-    //     // const errorMessage = error.message;
-    //     // console.log(errorCode, errorMessage);
-    //     // setErrorAuth({ code: error.code, message: error.message });
-    //   });
   };
 
   const isValidForm = () => {
@@ -130,6 +112,7 @@ export default function SignInUp() {
       </>
     );
   }
+  
   return (
     <div className="sign_in_up">
       {/* {loading} - {state.isAuth} - {state.user} - {user?.email} */}

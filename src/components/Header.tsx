@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 
 import { Button, Avatar } from "@mantine/core";
+import LocaleSwitcher from "../components/LocaleSwitcher";
 import "./Header.css";
 
 export default function HeaderApp() {
@@ -25,6 +26,8 @@ export default function HeaderApp() {
       <header className="header_app">
         <h2>GraphiQL - Team #6</h2>
         <div className="header_buttons">
+          <LocaleSwitcher />
+
           {!user && !loading && (
             <Button onClick={onClickSignInUp} className="header_sign_button">
               Sigh In / Sign Up
@@ -33,8 +36,10 @@ export default function HeaderApp() {
 
           {user && !loading && (
             <>
-              <Avatar radius="xl" />
-              <div className="header_user">{user.email}</div>
+              <div className="header_user">
+                <Avatar radius="xl" />
+                <div>{user.email}</div>
+              </div>
               <Button onClick={onClickSignOut} className="header_sign_button">
                 Sigh Out
               </Button>
