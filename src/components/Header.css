@@ -14,10 +14,23 @@
     display: flex;
     align-items: center;
 }
+.header_buttons > * {
+    margin-right: 1rem;
+}
+.header_buttons :last-child {
+    margin-right: 0;
+}
 
 .header_user {
-    padding: 0.35rem 2rem 0 0.35rem;
+    display: flex;
+    align-items: center;
     font-weight: 700;
+}
+.header_user > * {
+    margin-right: 0.5rem;
+}
+.header_user :last-child {
+    margin-right: 0;
 }
 
 @media  screen and (max-width: 460px) {
@@ -25,6 +38,10 @@
         flex-direction: column;
     }
     .header_sign_button {
-        margin-top: 0.7rem;
+        margin-top: 0.5rem;
+    }
+    .header_buttons {
+        margin-top: 0.5rem;
+        flex-direction: column;
     }
 }

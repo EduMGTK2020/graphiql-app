@@ -2,11 +2,15 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslation } from "react-i18next";
 
+import { Button } from "@mantine/core";
 import Loader from "../components/Loader";
 import "../pages/Main.css";
 
 export default function Main() {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
@@ -21,7 +25,8 @@ export default function Main() {
     return (
       <>
         <div className="loader">
-          <Loader /> <h4>Check auth...</h4>
+          <Loader />
+          <h4>{t("checkAuth")}</h4>
         </div>
       </>
     );
@@ -30,11 +35,27 @@ export default function Main() {
   return (
     <>
       <div className="main">
-        <h1>Main page</h1>
-        <p>
-          Section - editor, variables, headers (for query), documentation,
-          response
-        </p>
+        <div className="main_docs">
+          <div className="main_header">
+            <div className="main_title">Documentation</div>
+          </div>
+        </div>
+        <div className="main_request">
+          <div className="main_query">
+            <div className="main_header">
+              <div className="main_title">Query</div>
+              <Button>Run</Button>
+            </div>
+          </div>
+          <textarea></textarea>
+          <div className="main_variables">Variables</div>
+          <div className="main_headers">Headers</div>
+        </div>
+        <div className="main_response">
+          <div className="main_header">
+            <div className="main_title">Response</div>
+          </div>
+        </div>
       </div>
     </>
   );
