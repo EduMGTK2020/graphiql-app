@@ -42,22 +42,17 @@ export default function Main() {
 
   const fetchData = async () => {
     try {
-      const res = await FetchFunction(`query {
-        characters{results{status}
-          info
-          {
-            count
-          }
-          results{
-            name
-          }
-        }
-        }`);
+      const textarea = document.querySelector(".main_request textarea");
+      if (textarea instanceof HTMLTextAreaElement) {
+        const query = textarea.value;
 
-      if (res.data) {
-        setResponseData(JSON.stringify(res.data));
-      } else if (res.error) {
-        console.error(res.error);
+        const res = await FetchFunction(query);
+
+        if (res.data) {
+          setResponseData(JSON.stringify(res.data));
+        } else if (res.error) {
+          console.error(res.error);
+        }
       }
     } catch (error) {
       console.error(error);
