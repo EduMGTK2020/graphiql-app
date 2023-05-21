@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { Button } from "@mantine/core";
 import Loader from "../components/Loader";
+import Documentation from "../components/Documentation";
 import "../pages/Main.css";
 
 export default function Main() {
@@ -22,14 +23,7 @@ export default function Main() {
   });
 
   if (loading) {
-    return (
-      <>
-        <div className="loader">
-          <Loader />
-          <h4>{t("checkAuth")}</h4>
-        </div>
-      </>
-    );
+    return <Loader>{t("checkAuth")}</Loader>;
   }
 
   return (
@@ -39,6 +33,9 @@ export default function Main() {
           <div className="main_header">
             <div className="main_title">Documentation</div>
           </div>
+          <Suspense fallback={(<Loader>Загрузка...</Loader>)}>
+            <Documentation />
+          </Suspense>
         </div>
         <div className="main_request">
           <div className="main_query">

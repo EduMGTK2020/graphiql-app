@@ -111,11 +111,7 @@ export default function SignInUp() {
 
   if (user && loading) {
     return (
-      <>
-        <div className="loader">
-          <Loader /> <h4>{t("checkAuth")}</h4>
-        </div>
-      </>
+      <Loader>{t("checkAuth")}</Loader>
     );
   }
 
