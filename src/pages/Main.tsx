@@ -5,6 +5,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@mantine/core";
+import Accordion from "../components/EditorAccordion";
+
 import Loader from "../components/Loader";
 import "../pages/Main.css";
 
@@ -48,8 +50,7 @@ export default function Main() {
             </div>
           </div>
           <textarea></textarea>
-          <div className="main_variables">Variables</div>
-          <div className="main_headers">Headers</div>
+          <Accordion />
         </div>
         <div className="main_response">
           <div className="main_header">
@@ -60,3 +61,4 @@ export default function Main() {
     </>
   );
 }
+
