@@ -13,9 +13,10 @@ import "../pages/Main.css";
 import { useState } from "react";
 import FetchFunction from "../components/FetchComponent";
 import { startValue } from "../GraphQL/util";
+import ReactJson from "react-json-view";
 
 export default function Main() {
-  const [responseData, setResponseData] = useState("");
+  const [responseData, setResponseData] = useState(Object);
 
   const { t } = useTranslation();
 
@@ -49,7 +50,7 @@ export default function Main() {
         const res = await FetchFunction(query);
 
         if (res.data) {
-          setResponseData(JSON.stringify(res.data));
+          setResponseData(res.data);
         } else if (res.error) {
           console.error(res.error);
         }
@@ -77,17 +78,25 @@ export default function Main() {
             </div>
           </div>
           <textarea defaultValue={startValue}></textarea>
+          {/* <div className="main_query-field">
+            <ReactJson
+              src={JSON.parse(startValue)}
+              theme="summerfruit:inverted"
+              displayDataTypes={false}
+            />
+          </div> */}
           <Accordion />
         </div>
         <div className="main_response">
           <div className="main_header">
             <div className="main_title">Response</div>
           </div>
-          <div>
-            <textarea
-              className="main_response-textarea"
-              value={responseData}
-            ></textarea>
+          <div className="main_response-field">
+            <ReactJson
+              src={responseData}
+              theme="summerfruit:inverted"
+              displayDataTypes={false}
+            />
           </div>
         </div>
       </div>

@@ -45,19 +45,23 @@
   border-bottom: 0.1rem solid lightgray;
   height: 2.8rem;
 }
-textarea {
+textarea,
+.main_query-field {
   height: 100%;
   border-radius: 0.5rem;
+}
+.main_query-field {
+  border: 1px solid black;
 }
 
 .main_response {
   padding: 0.5rem 0.5rem;
 }
-.main_response-textarea {
-  width: 100%;
-  height: 75vh;
-  margin-top: 7px;
+.main_response-field {
+  height: 70vh;
+  overflow: auto;
 }
+
 @media screen and (max-width: 920px) {
   .main {
     flex-direction: column;
