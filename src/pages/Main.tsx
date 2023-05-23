@@ -14,8 +14,12 @@ import { useState } from "react";
 import FetchFunction from "../components/FetchComponent";
 import { startValue } from "../GraphQL/util";
 import ReactJson from "react-json-view";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 export default function Main() {
+  const variables = useSelector((state: RootState) => state.variables.value);
+
   const [responseData, setResponseData] = useState(Object);
   const [queryValue, setQueryValue] = useState(startValue);
 
@@ -44,7 +48,7 @@ export default function Main() {
 
   const fetchData = async () => {
     try {
-      const res = await FetchFunction(queryValue);
+      const res = await FetchFunction(queryValue, JSON.parse(variables));
 
       if (res.data) {
         setResponseData(res.data);
@@ -52,7 +56,12 @@ export default function Main() {
         console.error(res.error);
       }
     } catch (error) {
-      console.error(error);
+      if (error instanceof Error) {
+        if (error.message.includes("is not valid JSON")) {
+          /* TODO */
+          console.log("Please enter correct field variebles");
+        }
+      }
     }
   };
 
@@ -88,6 +97,7 @@ export default function Main() {
               src={responseData}
               theme="summerfruit:inverted"
               displayDataTypes={false}
+              displayObjectSize={false}
             />
           </div>
         </div>

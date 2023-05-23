@@ -1,6 +1,6 @@
 export default async function FetchFunction(
   query: string,
-  variables?: string
+  variables?: Record<string, unknown>
 ) {
   const response = await fetch("https://rickandmortyapi.com/graphql", {
     method: "POST",
@@ -8,12 +8,12 @@ export default async function FetchFunction(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      query: `${query}`,
-      variables: `${variables}`,
+      query,
+      variables,
     }),
-    
   });
 
   const data = await response.json();
   return data;
 }
+
