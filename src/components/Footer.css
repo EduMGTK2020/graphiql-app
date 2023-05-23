@@ -10,6 +10,18 @@
 .footer_app>h2 {
     margin: 0;
 }
+.footer_githubs, .footer_year, .footer_logo{
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.footer_githubs>a{
+  color: black;
+  text-decoration: none;
+}
+.footer_githubs>a:hover{
+  color: #1c7ed6;
+}
 
 @media screen and (max-width: 460px) {
     .footer_app {
