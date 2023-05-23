@@ -17,6 +17,7 @@ import ReactJson from "react-json-view";
 
 export default function Main() {
   const [responseData, setResponseData] = useState(Object);
+  const [queryValue, setQueryValue] = useState(startValue);
 
   const { t } = useTranslation();
 
@@ -43,17 +44,12 @@ export default function Main() {
 
   const fetchData = async () => {
     try {
-      const textarea = document.querySelector(".main_request textarea");
-      if (textarea instanceof HTMLTextAreaElement) {
-        const query = textarea.value;
+      const res = await FetchFunction(queryValue);
 
-        const res = await FetchFunction(query);
-
-        if (res.data) {
-          setResponseData(res.data);
-        } else if (res.error) {
-          console.error(res.error);
-        }
+      if (res.data) {
+        setResponseData(res.data);
+      } else if (res.error) {
+        console.error(res.error);
       }
     } catch (error) {
       console.error(error);
@@ -77,14 +73,10 @@ export default function Main() {
               </Button>
             </div>
           </div>
-          <textarea defaultValue={startValue}></textarea>
-          {/* <div className="main_query-field">
-            <ReactJson
-              src={JSON.parse(startValue)}
-              theme="summerfruit:inverted"
-              displayDataTypes={false}
-            />
-          </div> */}
+          <textarea
+            value={queryValue}
+            onChange={(e) => setQueryValue(e.target.value)}
+          ></textarea>
           <Accordion />
         </div>
         <div className="main_response">

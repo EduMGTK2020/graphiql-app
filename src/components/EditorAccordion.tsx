@@ -10,7 +10,7 @@ function AccordionFunction() {
         </Accordion.Control>
 
         <Accordion.Panel>
-          <textarea className="textarea"></textarea>
+          <textarea className="textarea var-textarea"></textarea>
         </Accordion.Panel>
       </Accordion.Item>
 
