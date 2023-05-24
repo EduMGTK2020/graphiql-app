@@ -25,6 +25,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-i18next": "^12.3.1",
     "react-router-dom": "^6.11.1",
+    "react18-json-view": "^0.0.8",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
