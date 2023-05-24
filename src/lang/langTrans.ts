@@ -24,6 +24,11 @@ export const En = {
   userLogin: "User login",
   userLogout: "User logout",
   errorFirebaseAuth: "Firebase auth error",
+  errorFetch: "Fetch error",
+  titleDoc: "Documentation",
+  titleQuery: "Query",
+  titleResponse: "Response",
+  titleVar: "Variables",
 };
 
 export const Ru = {
@@ -52,4 +57,9 @@ export const Ru = {
   userLogin: "Вход пользователя",
   userLogout: "Выход пользователя",
   errorFirebaseAuth: "Ошибка аутентификации Firebase",
+  errorFetch: "Ошибка получения данных",
+  titleDoc: "Документация",
+  titleQuery: "Запрос",
+  titleResponse: "Ответ",
+  titleVar: "Переменные",
 };

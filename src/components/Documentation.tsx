@@ -1,10 +1,17 @@
+import React, { Suspense } from "react";
+import Loader from "../components/Loader";
+
 import "./Documentation.css";
+
+const DocumentationPanel = React.lazy(() => import("./DocumentationPanel"));
 
 export default function Documentation() {
 
   return (
     <>
-      <div className="docs_container">Documentation</div>
+      <Suspense fallback={<Loader>Docs loading...</Loader>}>
+        <DocumentationPanel />
+      </Suspense>
     </>
   );
 }
