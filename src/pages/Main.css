@@ -1,16 +1,14 @@
 .main {
     display: flex;
-    flex-direction: row;
-    height: 100vh;
-    place-items: center;
     justify-content: center;
     width: 100%;
     margin: 0.5rem 0;
+    flex-grow: 1;
 }
 
 .main_title {
     font-weight: 700;
-    padding: 0.3rem;
+    padding: 0.3rem 1.2rem;
 }
 
 .main_docs,
@@ -25,7 +23,9 @@
 }
 
 .main_docs {
-    padding: 0.5rem 0.5rem;       
+    padding: 0.5rem 0.5rem;    
+    display: flex;
+    flex-direction: column;   
 }
 
 .main_request {
@@ -52,6 +52,8 @@ textarea {
 
 .main_response {
     padding: 0.5rem 0.5rem;    
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 920px) {

@@ -1,4 +1,4 @@
-import { useEffect, Suspense } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -9,6 +9,8 @@ import Accordion from "../components/EditorAccordion";
 
 import Loader from "../components/Loader";
 import Documentation from "../components/Documentation";
+import Response from "../components/Response";
+
 import "../pages/Main.css";
 
 export default function Main() {
@@ -18,9 +20,11 @@ export default function Main() {
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
 
+  const queryText = '{}';
+
   useEffect(() => {
     if (!user && !loading) {
-      navigate("/auth", { replace: true });
+      navigate("/", { replace: true });
     }
   });
 
@@ -35,9 +39,7 @@ export default function Main() {
           <div className="main_header">
             <div className="main_title">Documentation</div>
           </div>
-          <Suspense fallback={(<Loader>Загрузка...</Loader>)}>
-            <Documentation />
-          </Suspense>
+          <Documentation />
         </div>
         <div className="main_request">
           <div className="main_query">
@@ -46,16 +48,15 @@ export default function Main() {
               <Button>Run</Button>
             </div>
           </div>
-          <textarea></textarea>
           <Accordion />
         </div>
         <div className="main_response">
           <div className="main_header">
             <div className="main_title">Response</div>
           </div>
+          <Response query={queryText} />
         </div>
       </div>
     </>
   );
 }
-

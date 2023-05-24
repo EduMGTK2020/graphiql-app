@@ -1,16 +1,16 @@
-.docs_container {
+.res_container {
     overflow: hidden scroll;
     flex-grow: 1;
     height: 100px;
 }
 
-.docs_item {
+.res_item {
     display: flex;
     flex-direction: column;
     width: 100%;
     flex-grow: 1;
 }
 
-.docs_item:hover {
+.res_container:hover {
     background-color:  #228be609;
 }

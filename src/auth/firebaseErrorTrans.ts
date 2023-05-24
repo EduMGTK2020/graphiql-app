@@ -33,3 +33,10 @@ addError(
   "Network request failed, possibly no Internet connection ",
   "Запрос к сети не удался, возможно нет подключения к Интернету "
 );
+
+// fetch error
+addError(
+  "Failed to fetch",
+  "Failed to fetch",
+  "Не удалось получить данные "
+);
