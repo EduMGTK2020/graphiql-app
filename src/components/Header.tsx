@@ -7,6 +7,8 @@ import { Button, Avatar } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { currentTime } from "../utils";
 import LocaleSwitcher from "../components/LocaleSwitcher";
+
+import ProjectSVG from "../assets/logo.svg";
 import "./Header.css";
 
 export default function HeaderApp() {
@@ -44,10 +46,12 @@ export default function HeaderApp() {
   return (
     <>
       <header className="header_app">
-        <h2>GraphiQL - {t("team")} #6</h2>
+        <h2>
+          <img className="header_logo" src={ProjectSVG} alt="Project logo" />
+          GraphiQL - {t("team")} #6
+        </h2>
         <div className="header_buttons">
-
-<LocaleSwitcher />
+          <LocaleSwitcher />
 
           {noAuthUser && location.pathname != "/auth" && (
             <Button onClick={onClickSignInUp} className="header_sign_button">
@@ -72,8 +76,6 @@ export default function HeaderApp() {
               </Button>
             </>
           )}
-
-          
         </div>
       </header>
     </>
