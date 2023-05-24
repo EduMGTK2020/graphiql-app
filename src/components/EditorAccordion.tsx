@@ -1,7 +1,10 @@
 import { Accordion } from "@mantine/core";
+import { useTranslation } from "react-i18next";
+
 import "./EditorAccordion.css";
 
 function AccordionFunction() {
+  const { t } = useTranslation();
   return (
     <>
       <textarea className="textarea_query "></textarea>
@@ -9,7 +12,7 @@ function AccordionFunction() {
       <Accordion defaultValue="customization" transitionDuration={500}>
         <Accordion.Item value="customization">
           <Accordion.Control>
-            <b>Variables</b>
+            <b>{t("titleVar")}</b>
           </Accordion.Control>
 
           <Accordion.Panel>

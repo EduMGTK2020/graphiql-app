@@ -1,4 +1,4 @@
-const url = "https://rickandmortyapi.com/graphql1";
+const url = "https://rickandmortyapi.com/graphql";
 
 const introspectionQueryText = `query IntrospectionQuery {
     __schema {

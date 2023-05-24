@@ -19,7 +19,6 @@ export default function DocumentationPanel() {
     introspectionQuery()
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setData(data);
       })
       .catch((err) => {
@@ -30,7 +29,7 @@ export default function DocumentationPanel() {
           color: "red",
         });
       });
-  }, []);
+  }, [t]);
 
   if (!data) {
     return null;

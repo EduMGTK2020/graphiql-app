@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -20,7 +20,7 @@ export default function Main() {
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
 
-  const queryText = '{}';
+  const queryText = "{}";
 
   useEffect(() => {
     if (!user && !loading) {
@@ -37,14 +37,14 @@ export default function Main() {
       <div className="main">
         <div className="main_docs">
           <div className="main_header">
-            <div className="main_title">Documentation</div>
+            <div className="main_title">{t('titleDoc')}</div>
           </div>
           <Documentation />
         </div>
         <div className="main_request">
           <div className="main_query">
             <div className="main_header">
-              <div className="main_title">Query</div>
+              <div className="main_title">{t('titleQuery')}</div>
               <Button>Run</Button>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Main() {
         </div>
         <div className="main_response">
           <div className="main_header">
-            <div className="main_title">Response</div>
+            <div className="main_title">{t('titleResponse')}</div>
           </div>
           <Response query={queryText} />
         </div>
