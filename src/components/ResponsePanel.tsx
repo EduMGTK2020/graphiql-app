@@ -7,22 +7,23 @@ import { regularQuery } from "../api/rickAndMorty";
 import { addResponse } from "../store/responseSlice";
 import { useDispatch } from "react-redux";
 
-export default function ResponsePanel(props: { query: string }) {
+export default function ResponsePanel(props: {
+  query: string;
+  variables?: object;
+}) {
   const [data, setData] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (props.query) {
-      regularQuery(" " + props.query, "")
+      regularQuery(" " + props.query, props.variables)
         .then((response) => response.json())
         .then((data) => {
           setData(data);
           dispatch(addResponse(JSON.stringify(data)));
         });
     }
-  }, [props.query, dispatch]);
-
-  
+  }, [props.query, props.variables, dispatch]);
 
   if (!data) {
     return null;

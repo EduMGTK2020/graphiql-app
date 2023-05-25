@@ -18,6 +18,9 @@ import { RootState } from "../store/store";
 
 export default function Main() {
   const query = useSelector((state: RootState) => state.finalQuery.value);
+  const variables = useSelector(
+    (state: RootState) => state.finalVariables.value
+  );
 
   const { t } = useTranslation();
 
@@ -34,6 +37,7 @@ export default function Main() {
   if (loading) {
     return <Loader>{t("checkAuth")}</Loader>;
   }
+
 
   return (
     <>
@@ -57,7 +61,7 @@ export default function Main() {
           <div className="main_header">
             <div className="main_title">{t("titleResponse")}</div>
           </div>
-          <Response query={query} />
+          <Response query={query} variables={JSON.parse(variables)} />
         </div>
       </div>
     </>
