@@ -24,15 +24,15 @@ export default function Welcome() {
         <h2>{t("welcomeTeam")}</h2>
         <div className="welcome_devs">
           <div className="dev">
-            <img src="/dev2.png" alt="developer" height={100} />
+            <img src="./dev2.png" alt="developer" height={100} />
             <p>{t("welcomeDevs").split(",")[0]}</p>
           </div>
           <div className="dev">
-            <img src="/dev2.png" alt="developer" height={100} />
+            <img src="./dev2.png" alt="developer" height={100} />
             <p>{t("welcomeDevs").split(",")[1]}</p>
           </div>
           <div className="dev">
-            <img src="/dev2.png" alt="developer" height={100} />
+            <img src="./dev2.png" alt="developer" height={100} />
             <p>{t("welcomeDevs").split(",")[2]}</p>
           </div>
         </div>
