@@ -4,7 +4,7 @@ import "./Response.css";
 
 const ResponsePanel = React.lazy(() => import("./ResponsePanel"));
 
-export default function Response(props: { query: string; variables?: object }) {
+export default function Response(props: { query: string; variables: string }) {
   return (
     <>
       <Suspense fallback={<Loader>Loading...</Loader>}>

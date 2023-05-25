@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 
 export default function ResponsePanel(props: {
   query: string;
-  variables?: object;
+  variables: string;
 }) {
   const [data, setData] = useState();
   const dispatch = useDispatch();
@@ -17,7 +17,9 @@ export default function ResponsePanel(props: {
   useEffect(() => {
     if (props.query) {
       regularQuery(" " + props.query, props.variables)
-        .then((response) => response.json())
+        .then((response) => {
+          return response.json();
+        })
         .then((data) => {
           setData(data);
           dispatch(addResponse(JSON.stringify(data)));

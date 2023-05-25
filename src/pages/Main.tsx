@@ -37,8 +37,6 @@ export default function Main() {
   if (loading) {
     return <Loader>{t("checkAuth")}</Loader>;
   }
-
-
   return (
     <>
       <div className="main">
