@@ -4,8 +4,10 @@ export const En = {
   mainTitle: "Main page",
   mainInfo:
     "Section - editor, variables, headers (for query), documentation, response",
-  welcomeTitle: "Welcome page",
+  welcomeTitle: "Welcome to our GraphiQL!",
   welcomeInfo: "Developers, project, course",
+  welcomeTeam: "Our team on React-2023-Q1 course",
+  welcomeDevs: "Eduard Nebolsin,Yury Shpakouski,Farkhod Kodirov",
   goMain: "Go to Main page",
   goWelcome: "Go to Welcome page",
   labelSignIn: "Sigh In",
@@ -18,6 +20,7 @@ export const En = {
     "Invalid password, must be 8-20 symbols, at least one letter, one digit, one special character",
   pageNotFound: "Page not found",
   footerTitle: "Footer",
+  footerGithub: "Eduard Nebolsin Yury Shpakouski Farkhod Kodirov",
   footerInfo:
     "Link to authors github, app year, course logo with link to the course",
   userCreate: "User create & login",
@@ -37,8 +40,10 @@ export const Ru = {
   mainTitle: "Главная страница",
   mainInfo:
     "Секции - редактор, переменные, заголовки (для запроса), документация, ответ",
-  welcomeTitle: "Страница приветствия",
+  welcomeTitle: "Добро пожаловать в наш GraphiQL!",
   welcomeInfo: "Разработчики, проект, курс",
+  welcomeTeam: "Наша команда на курсе React-2023-Q1",
+  welcomeDevs: "Эдуард Небольсин,Юрий Шпаковский,Фарход Кодиров",
   goMain: "Перейти на Главную страницу",
   goWelcome: "Перейти на страницу приветствия",
   labelSignIn: "Вход",
@@ -51,6 +56,7 @@ export const Ru = {
     "Пароль должен состоять из 8-20 символов, влючать хотя бы одну букву, одну цифру, один спец.символ",
   pageNotFound: "Страница не найдена",
   footerTitle: "Контакты",
+  footerGithub: "Eduard Nebolsin Yury Shpakouski Farkhod Kodirov",
   footerInfo:
     "Ссылки на репо авторов, год публикации приложения, лого курса со ссылкой на него",
   userCreate: "Пользователь зарегистрирован",

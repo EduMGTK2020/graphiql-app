@@ -20,10 +20,24 @@ export default function Welcome() {
   return (
     <>
       <section className="welcome">
-        <h1>{t('welcomeTitle')}</h1>
-        <p>{t('welcomeInfo')}</p>
+        <h1>{t("welcomeTitle")}</h1>
+        <h2>{t("welcomeTeam")}</h2>
+        <div className="welcome_devs">
+          <div className="dev">
+            <img src="/dev2.png" alt="developer" height={100} />
+            <p>{t("welcomeDevs").split(",")[0]}</p>
+          </div>
+          <div className="dev">
+            <img src="/dev2.png" alt="developer" height={100} />
+            <p>{t("welcomeDevs").split(",")[1]}</p>
+          </div>
+          <div className="dev">
+            <img src="/dev2.png" alt="developer" height={100} />
+            <p>{t("welcomeDevs").split(",")[2]}</p>
+          </div>
+        </div>
         {user && !loading && (
-          <Button onClick={goToMainPage}>{t('goMain')}</Button>
+          <Button onClick={goToMainPage}>{t("goMain")}</Button>
         )}
       </section>
     </>

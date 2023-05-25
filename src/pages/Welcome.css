@@ -5,3 +5,10 @@
     justify-content: center;
     flex-grow: 1;
 }
+.welcome_devs{
+  display: flex;
+  gap: 100px;
+}
+.dev{
+  text-align: center;
+}
