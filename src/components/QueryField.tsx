@@ -11,9 +11,22 @@ export default function Query() {
   const query = useSelector((state: RootState) => state.query.value);
   const variables = useSelector((state: RootState) => state.variables.value);
 
+  function isValidJSON(str: string) {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function buttonClick() {
     dispatch(addFinalQuery(query));
-    dispatch(addFinalVariables(variables));
+    if (isValidJSON(variables)) {
+      dispatch(addFinalVariables(variables));
+    } else {
+      dispatch(addFinalVariables("{}"));
+    }
   }
 
   return (
