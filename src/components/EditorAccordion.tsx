@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { useDispatch } from "react-redux";
 import { addVariables } from "../store/variablesSlice";
+import { addQuery } from "../store/querySlice";
 
 import "./EditorAccordion.css";
 
@@ -12,7 +13,17 @@ function AccordionFunction() {
 
   return (
     <>
-      <textarea className="textarea_query "></textarea>
+      <textarea
+        defaultValue={`query {
+        characters{results{status}
+          results{
+            name
+          }
+        }
+        }`}
+        className="textarea_query "
+        onChange={(e) => dispatch(addQuery(`${e.target.value}`))}
+      ></textarea>
 
       <Accordion defaultValue="customization" transitionDuration={500}>
         <Accordion.Item value="customization">

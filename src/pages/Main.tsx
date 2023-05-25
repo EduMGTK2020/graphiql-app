@@ -4,8 +4,8 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "@mantine/core";
 import Accordion from "../components/EditorAccordion";
+import Query from "../components/QueryField";
 
 import Loader from "../components/Loader";
 import Documentation from "../components/Documentation";
@@ -13,19 +13,17 @@ import Response from "../components/Response";
 
 import "../pages/Main.css";
 
-/* import { useSelector } from "react-redux";
-import { RootState } from "../store/store"; */
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 export default function Main() {
-  /* const variables = useSelector((state: RootState) => state.variables.value); */
+  const query = useSelector((state: RootState) => state.finalQuery.value);
 
   const { t } = useTranslation();
 
   const navigate = useNavigate();
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
-
-  const queryText = "{}";
 
   useEffect(() => {
     if (!user && !loading) {
@@ -50,7 +48,7 @@ export default function Main() {
           <div className="main_query">
             <div className="main_header">
               <div className="main_title">{t("titleQuery")}</div>
-              <Button>Run</Button>
+              <Query />
             </div>
           </div>
           <Accordion />
@@ -59,7 +57,7 @@ export default function Main() {
           <div className="main_header">
             <div className="main_title">{t("titleResponse")}</div>
           </div>
-          <Response query={queryText} />
+          <Response query={query} />
         </div>
       </div>
     </>
