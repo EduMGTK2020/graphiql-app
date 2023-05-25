@@ -13,7 +13,12 @@ import Response from "../components/Response";
 
 import "../pages/Main.css";
 
+/* import { useSelector } from "react-redux";
+import { RootState } from "../store/store"; */
+
 export default function Main() {
+  /* const variables = useSelector((state: RootState) => state.variables.value); */
+
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -37,14 +42,14 @@ export default function Main() {
       <div className="main">
         <div className="main_docs">
           <div className="main_header">
-            <div className="main_title">{t('titleDoc')}</div>
+            <div className="main_title">{t("titleDoc")}</div>
           </div>
           <Documentation />
         </div>
         <div className="main_request">
           <div className="main_query">
             <div className="main_header">
-              <div className="main_title">{t('titleQuery')}</div>
+              <div className="main_title">{t("titleQuery")}</div>
               <Button>Run</Button>
             </div>
           </div>
@@ -52,7 +57,7 @@ export default function Main() {
         </div>
         <div className="main_response">
           <div className="main_header">
-            <div className="main_title">{t('titleResponse')}</div>
+            <div className="main_title">{t("titleResponse")}</div>
           </div>
           <Response query={queryText} />
         </div>
@@ -60,3 +65,4 @@ export default function Main() {
     </>
   );
 }
+

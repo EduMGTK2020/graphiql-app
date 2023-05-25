@@ -1,10 +1,15 @@
 import { Accordion } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 
+import { useDispatch } from "react-redux";
+import { addVariables } from "../store/variablesSlice";
+
 import "./EditorAccordion.css";
 
 function AccordionFunction() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   return (
     <>
       <textarea className="textarea_query "></textarea>
@@ -16,7 +21,10 @@ function AccordionFunction() {
           </Accordion.Control>
 
           <Accordion.Panel>
-            <textarea className="textarea"></textarea>
+            <textarea
+              className="textarea var-textarea"
+              onChange={(e) => dispatch(addVariables(`${e.target.value}`))}
+            ></textarea>{" "}
           </Accordion.Panel>
         </Accordion.Item>
 
@@ -34,3 +42,4 @@ function AccordionFunction() {
 }
 
 export default AccordionFunction;
+
