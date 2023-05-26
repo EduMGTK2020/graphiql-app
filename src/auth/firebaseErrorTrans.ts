@@ -33,6 +33,11 @@ addError(
   "Network request failed, possibly no Internet connection ",
   "Запрос к сети не удался, возможно нет подключения к Интернету "
 );
+addError(
+  "auth/api-key-not-valid.-please-pass-a-valid-api-key.",
+  "API-key not valid or missing",
+  "API-ключ недействителен или отсутствует"
+);
 
 // fetch error
 addError(
