@@ -39,14 +39,14 @@ function AccordionFunction() {
           </Accordion.Panel>
         </Accordion.Item>
 
-        {/* <Accordion.Item value="flexibility">
-        <Accordion.Control>
-          <b>Headers</b>
-        </Accordion.Control>
-        <Accordion.Panel>
-          <textarea className="textarea"></textarea>
-        </Accordion.Panel>
-      </Accordion.Item> */}
+        <Accordion.Item value="flexibility">
+          <Accordion.Control>
+            <b>Headers</b>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <textarea className="textarea"></textarea>
+          </Accordion.Panel>
+        </Accordion.Item>
       </Accordion>
     </>
   );
