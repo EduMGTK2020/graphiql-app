@@ -41,6 +41,10 @@ export default function HeaderApp() {
     navigate("/");
   };
 
+  const goToMainPage = () => {
+    navigate("/main");
+  };
+
   const noAuthUser = !user && !loading;
 
   return (
@@ -75,6 +79,10 @@ export default function HeaderApp() {
                 {t("labelSignOut")}
               </Button>
             </>
+          )}
+
+          {!noAuthUser && location.pathname == "/" && (
+            <Button onClick={goToMainPage}>{t("goMain")}</Button>
           )}
         </div>
       </header>
