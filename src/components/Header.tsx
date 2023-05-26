@@ -10,6 +10,7 @@ import LocaleSwitcher from "../components/LocaleSwitcher";
 
 import ProjectSVG from "../assets/logo.svg";
 import "./Header.css";
+import { useEffect, useState } from "react";
 
 export default function HeaderApp() {
   const { t } = useTranslation();
@@ -43,9 +44,26 @@ export default function HeaderApp() {
 
   const noAuthUser = !user && !loading;
 
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.pageYOffset;
+      setIsSticky(currentScroll > 5);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("touchmove", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className="header_app">
+      <header className={isSticky ? "header_app is-sticky" : "header_app"}>
         <h2>
           <img className="header_logo" src={ProjectSVG} alt="Project logo" />
           GraphiQL - {t("team")} #6
@@ -81,3 +99,4 @@ export default function HeaderApp() {
     </>
   );
 }
+
