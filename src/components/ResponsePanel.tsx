@@ -5,27 +5,31 @@ import "react18-json-view/src/style.css";
 
 import { regularQuery } from "../api/rickAndMorty";
 import { addResponse } from "../store/responseSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
-export default function ResponsePanel(props: {
-  query: string;
-  variables: string;
-}) {
+export default function ResponsePanel() {
+  const query = useSelector((state: RootState) => state.finalQuery.value);
+  const variables = useSelector(
+    (state: RootState) => state.finalVariables.value
+  );
+  const response = useSelector((state: RootState) => state.response.value);
+
   const [data, setData] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (props.query) {
-      regularQuery(" " + props.query, props.variables)
-        .then((response) => {
-          return response.json();
-        })
+    if (query.trim()) {
+      regularQuery(" " + query, JSON.parse(variables))
+        .then((response) => response.json())
         .then((data) => {
           setData(data);
           dispatch(addResponse(JSON.stringify(data)));
         });
+    } else {
+      setData(undefined);
     }
-  }, [props.query, props.variables, dispatch]);
+  }, [query, variables, response, dispatch]);
 
   if (!data) {
     return null;
@@ -41,4 +45,3 @@ export default function ResponsePanel(props: {
     </>
   );
 }
-

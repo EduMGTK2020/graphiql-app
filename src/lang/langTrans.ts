@@ -32,6 +32,9 @@ export const En = {
   titleQuery: "Query",
   titleResponse: "Response",
   titleVar: "Variables",
+  errorQuery: "Query error",
+  errorEmptyQuery: "Empty query",
+  runButton: "Run",
 };
 
 export const Ru = {
@@ -68,4 +71,7 @@ export const Ru = {
   titleQuery: "Запрос",
   titleResponse: "Ответ",
   titleVar: "Переменные",
+  errorQuery: "Ошибка запроса",
+  errorEmptyQuery: "Пустой текст запроса",
+  runButton: "Выполнить",
 };

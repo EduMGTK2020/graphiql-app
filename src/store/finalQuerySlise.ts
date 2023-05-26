@@ -3,13 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const finalQuerySlice = createSlice({
   name: "finalQuery",
   initialState: {
-    value: `query {
-        characters{results{status}
-          results{
-            name
-          }
-        }
-        }`,
+    value: "",
   },
   reducers: {
     addFinalQuery(state, action) {
