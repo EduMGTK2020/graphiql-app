@@ -10,6 +10,7 @@ import { addFinalQuery } from "../store/finalQuerySlise";
 import { addResponse } from "../store/responseSlice";
 import "./Response.css";
 import { addFinalVariables } from "../store/finalVariablesSlise";
+import { currentTime } from "../utils";
 
 export default function Query() {
   const { t } = useTranslation();
@@ -28,18 +29,20 @@ export default function Query() {
   }
 
   function buttonClick() {
-    dispatch(addResponse(""));
-    dispatch(addFinalQuery(query));
+    dispatch(addResponse("{}"));
 
     if (!query.trim()) {
+      dispatch(addFinalQuery(""));
       notifications.show({
         title: t("errorQuery"),
-        message: t("errorEmptyQuery"),
-        autoClose: 2000,
+        message: currentTime() + " - " + t("errorEmptyQuery"),
+        autoClose: 5000,
         color: "red",
       });
       return;
     }
+
+    dispatch(addFinalQuery(query));
 
     if (isValidJSON(variables)) {
       dispatch(addFinalVariables(variables));
@@ -51,7 +54,7 @@ export default function Query() {
   return (
     <>
       <Button className="run-button" onClick={buttonClick}>
-        {t('runButton')}
+        {t("runButton")}
       </Button>
     </>
   );

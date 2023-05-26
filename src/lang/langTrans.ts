@@ -1,6 +1,6 @@
 export const En = {
   team: "Team",
-  checkAuth: "Check auth...",
+  checkAuth: "Check auth",
   mainTitle: "Main page",
   mainInfo:
     "Section - editor, variables, headers (for query), documentation, response",
@@ -34,12 +34,16 @@ export const En = {
   titleVar: "Variables",
   errorQuery: "Query error",
   errorEmptyQuery: "Empty query",
+  errorsToResponse: "Errors message in response section",
   runButton: "Run",
+  successQuery: "Successful query",
+  successToResponse:"Results in response section",
+  waitingForQueryResult:"Waiting for query result",
 };
 
 export const Ru = {
   team: "Команда",
-  checkAuth: "Проверка авторизации...",
+  checkAuth: "Проверка авторизации",
   mainTitle: "Главная страница",
   mainInfo:
     "Секции - редактор, переменные, заголовки (для запроса), документация, ответ",
@@ -73,5 +77,9 @@ export const Ru = {
   titleVar: "Переменные",
   errorQuery: "Ошибка запроса",
   errorEmptyQuery: "Пустой текст запроса",
+  errorsToResponse: "Сообщение об ошибке в разделе ответа",
   runButton: "Выполнить",
+  successQuery: "Успешный запрос",
+  successToResponse:"Результаты в разделе ответа",
+  waitingForQueryResult:"Ожидание результата запроса",
 };

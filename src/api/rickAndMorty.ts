@@ -1,7 +1,6 @@
 import wrapPromise from "../api/wrapPromise";
 
-const url = "https://rickandmortyapi.com/graphql1";
-// const url = "https://spacex-production.up.railway.app/";
+const url = "https://rickandmortyapi.com/graphql";
 
 const introspectionQueryText = `query IntrospectionQuery {
     __schema {
@@ -123,7 +122,7 @@ export async function introspectionQuery() {
 }
 
 export function regularQuery(query: string, variables: string) {
-  return runQuery(query, variables);
+  return runQuery(query.trim(), variables);
 }
 
 export function fetchDataSuspense() {

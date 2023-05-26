@@ -13,16 +13,6 @@ function wrapPromise<T>(promise: Promise<T>) {
     }
   );
 
-  //   const handler = {
-  //     pending: () => {
-  //       throw suspender;
-  //     },
-  //     error: () => {
-  //       throw response;
-  //     },
-  //     success: () => response,
-  //   };
-
   const read = () => {
     switch (status) {
       case "pending":
@@ -32,29 +22,9 @@ function wrapPromise<T>(promise: Promise<T>) {
       default:
         return response;
     }
-
-    // const result = handler[status] ? handler[status]() : handler.default();
-    // return result;
   };
 
   return { read };
 }
-//   return () => {
-//     switch (status) {
-//         case 'pending':
-//             throw suspender
-//         case 'error':
-//             throw response
-//         default:
-//             return response
-//     }
-
-//   const read = () => {
-//     const result = handler[status] ? handler[status]() : handler.default();
-//     return result;
-//   };
-
-//   return { read };
-// }
 
 export default wrapPromise;

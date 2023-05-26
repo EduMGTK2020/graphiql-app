@@ -7,7 +7,12 @@ const finalQuerySlice = createSlice({
   },
   reducers: {
     addFinalQuery(state, action) {
-      state.value = action.payload;
+      //disable "cache" :)
+      if(state.value.startsWith(" "))
+        state.value = action.payload;
+      else {
+        state.value = " "+ action.payload;
+      }  
     },
   },
 });

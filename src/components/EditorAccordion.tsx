@@ -14,13 +14,6 @@ function AccordionFunction() {
   return (
     <>
       <textarea
-        // defaultValue={`query {
-        // characters{results{status}
-        //   results{
-        //     name
-        //   }
-        // }
-        // }`}
         className="textarea_query "
         onChange={(e) => dispatch(addQuery(`${e.target.value}`))}
       ></textarea>
@@ -44,4 +37,3 @@ function AccordionFunction() {
 }
 
 export default AccordionFunction;
-
