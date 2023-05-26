@@ -1,31 +1,39 @@
 .footer_app {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    height: 3rem;
-    border-top: 0.0625rem solid #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  height: 3rem;
+  border-top: 0.0625rem solid #e9ecef;
 }
 
-.footer_app>h2 {
-    margin: 0;
+.footer_app > h2 {
+  margin: 0;
 }
-.footer_githubs, .footer_year, .footer_logo{
+.footer_githubs,
+.footer_year,
+.footer_logo {
   flex-basis: 100%;
   text-align: center;
 }
 
-.footer_githubs>a{
+.footer_githubs > a {
   color: black;
   text-decoration: none;
 }
-.footer_githubs>a:hover{
+.footer_githubs > a:hover {
   color: #1c7ed6;
 }
 
 @media screen and (max-width: 460px) {
-    .footer_app {
-        flex-direction: column;
-        height: unset;
-    }
+
+  .footer_app {
+    flex-direction: column;
+    height: unset;
+    background-color: 0.5;
+  }
+  .footer_githubs a {
+    font-size: smaller;
+  }
 }
+

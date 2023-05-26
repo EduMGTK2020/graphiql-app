@@ -49,7 +49,7 @@ export default function HeaderApp() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
-      setIsSticky(currentScroll > 5);
+      setIsSticky(currentScroll > 0.1);
     };
 
     window.addEventListener("scroll", handleScroll);

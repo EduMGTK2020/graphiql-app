@@ -1,14 +1,28 @@
 .welcome {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    justify-content: center;
-    flex-grow: 1;
-}
-.welcome_devs{
   display: flex;
-  gap: 100px;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
-.dev{
+.welcome_devs {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 100px;
+
+  justify-content: center;
+}
+.dev {
   text-align: center;
 }
+@media (max-width: 470px) {
+  .welcome h1,
+  .welcome h2 {
+    font-size: medium;
+  }
+  .dev img {
+    height: 50px;
+  }
+}
+

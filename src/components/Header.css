@@ -70,3 +70,8 @@
   }
 }
 
+@media (max-width: 470px) {
+  .header_app h2 {
+    font-size: medium;
+  }
+}
