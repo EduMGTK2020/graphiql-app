@@ -16,13 +16,31 @@
 .dev {
   text-align: center;
 }
+
+@media screen and (max-width: 950px) {
+  .welcome_devs {
+    margin: 50px;
+  }
+  .welcome button {
+    margin: 50px;
+  }
+}
+
+@media (max-width: 690px) {
+  .welcome_devs {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+}
 @media (max-width: 470px) {
   .welcome h1,
   .welcome h2 {
     font-size: medium;
   }
   .dev img {
-    height: 50px;
+    height: 75px;
   }
 }
 
