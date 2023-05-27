@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
@@ -47,6 +48,21 @@ export default function HeaderApp() {
 
   const noAuthUser = !user && !loading;
 
+  useEffect(() => {
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  });
+
+  const isSticky = () => {
+    const header = document.querySelector(".header_app");
+    const scrollTop = window.scrollY;
+    scrollTop > 15
+      ? header?.classList.add("is-sticky")
+      : header?.classList.remove("is-sticky");
+  };
+
   return (
     <>
       <header className="header_app">
@@ -75,15 +91,23 @@ export default function HeaderApp() {
                 <Avatar radius="xl" />
                 <div>{user.email}</div>
               </div>
-              <Button onClick={onClickSignOut} className="header_sign_button">
-                {t("labelSignOut")}
-              </Button>
             </>
           )}
+          <div className="header_group">
+            {user && !loading && (
+              <>
+                <Button onClick={onClickSignOut} className="header_sign_button">
+                  {t("labelSignOut")}
+                </Button>
+              </>
+            )}
 
-          {!noAuthUser && location.pathname == "/" && (
-            <Button onClick={goToMainPage}>{t("goMain")}</Button>
-          )}
+            {!noAuthUser && location.pathname == "/" && (
+              <Button onClick={goToMainPage} className="header_button">
+                {t("goMain")}
+              </Button>
+            )}
+          </div>
         </div>
       </header>
     </>

@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
   <Provider store={store}>
     <MantineProvider withGlobalStyles withNormalizeCSS>
-      <Notifications position="top-center" />
+      <Notifications position="bottom-right" />
       <AuthProvider>
         <HashRouter>
           <App />

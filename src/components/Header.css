@@ -4,6 +4,9 @@
     justify-content: space-between;
     padding: 1rem 2rem;
     border-bottom: 0.1rem solid #e9ecef;
+    max-height: 12rem;
+    transition: max-heigh 0.5s ease;
+    background-color: #ffffff;
 }
 
 .header_logo {
@@ -19,9 +22,15 @@
     display: flex;
     align-items: center;
 }
-.header_buttons > * {
+
+.header_buttons>* {
     margin-right: 1rem;
 }
+
+.header_buttons * {
+    margin-right: 0.5rem;
+}
+
 .header_buttons :last-child {
     margin-right: 0;
 }
@@ -31,22 +40,52 @@
     align-items: center;
     font-weight: 700;
 }
-.header_user > * {
+
+.header_user>* {
     margin-right: 0.5rem;
 }
+
 .header_user :last-child {
     margin-right: 0;
 }
 
-@media  screen and (max-width: 580px) {
+@media screen and (max-width: 580px) {
     .header_app {
         flex-direction: column;
+        max-height: 13rem;
+        transition: max-height 1s ease;
+        overflow: hidden;
+        z-index: 999;
     }
+
+    .header_app>h2 {
+        font-size: 1.2rem;
+    }
+
     .header_sign_button {
         margin-top: 0.5rem;
     }
+
     .header_buttons {
         margin-top: 0.5rem;
         flex-direction: column;
     }
+
+}
+
+@media screen and (max-width: 915px) {
+    .header_button {
+        margin-top: 0.5rem;
+    }
+}
+
+.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff !important;
+    padding-top: 1rem;
+    max-height: 3.7rem;
+    transition: all 0.5s ease;
 }

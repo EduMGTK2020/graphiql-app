@@ -2,6 +2,7 @@
     overflow: hidden scroll;
     flex-grow: 1;
     height: 100px;
+    padding: 1rem;
 }
 
 .res_item {
@@ -12,5 +13,5 @@
 }
 
 .res_container:hover {
-    background-color:  #228be609;
+    background-color: #228be609;
 }

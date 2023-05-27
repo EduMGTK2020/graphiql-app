@@ -20,28 +20,34 @@ export default function LocaleSwitcher() {
 
   return (
     <>
-      <SegmentedControl
-        value={locale}
-        onChange={toggleLocale}
-        data={[
-          {
-            value: "en",
-            label: (
-              <Center>
-                <Box sx={{ color: locale == "en" ? colorActive : "" }}>En</Box>
-              </Center>
-            ),
-          },
-          {
-            value: "ru",
-            label: (
-              <Center>
-                <Box sx={{ color: locale == "ru" ? colorActive : "" }}>Рус</Box>
-              </Center>
-            ),
-          },
-        ]}
-      />
+      <div className="locale_switcher">
+        <SegmentedControl
+          value={locale}
+          onChange={toggleLocale}
+          data={[
+            {
+              value: "en",
+              label: (
+                <Center>
+                  <Box sx={{ color: locale == "en" ? colorActive : "" }}>
+                    En
+                  </Box>
+                </Center>
+              ),
+            },
+            {
+              value: "ru",
+              label: (
+                <Center>
+                  <Box sx={{ color: locale == "ru" ? colorActive : "" }}>
+                    Рус
+                  </Box>
+                </Center>
+              ),
+            },
+          ]}
+        />
+      </div>
     </>
   );
 }

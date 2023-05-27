@@ -41,6 +41,7 @@ export default function ResponsePanel() {
         })
         .catch((err) => {
           notifyError("errorFetch", err.message);
+          dispatch(addResponse(''));
         });
     } else {
       setData(undefined);

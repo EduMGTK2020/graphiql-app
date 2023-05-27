@@ -7,8 +7,14 @@
 }
 .welcome_devs{
   display: flex;
-  gap: 100px;
+  gap: 50px;
 }
 .dev{
   text-align: center;
+}
+
+@media screen and (max-width: 580px) {
+  .welcome_devs {
+    flex-direction: column;
+  }
 }
