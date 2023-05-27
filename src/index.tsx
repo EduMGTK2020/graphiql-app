@@ -23,7 +23,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       </AuthProvider>
     </MantineProvider>
   </Provider>
-
   // </React.StrictMode>
 );
 

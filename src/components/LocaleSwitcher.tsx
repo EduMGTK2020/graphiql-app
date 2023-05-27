@@ -3,16 +3,20 @@ import { SegmentedControl, Center, Box } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 
 export default function LocaleSwitcher() {
-  const [locale, setLocale] = useState("en");
+  const [locale, setLocale] = useState(localStorage.getItem("locale") || "en");
   const { i18n } = useTranslation();
+
+  const localeSwitch = (locale: string) => {
+    setLocale(locale);
+    i18n.changeLanguage(locale);
+    localStorage.setItem("locale", locale);
+  };
 
   const toggleLocale = () => {
     if (locale == "en") {
-      setLocale("ru");
-      i18n.changeLanguage("ru");
+      localeSwitch("ru");
     } else {
-      setLocale("en");
-      i18n.changeLanguage("en");
+      localeSwitch("en");
     }
   };
 

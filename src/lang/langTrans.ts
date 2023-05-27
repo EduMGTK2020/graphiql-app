@@ -39,6 +39,7 @@ export const En = {
   successQuery: "Successful query",
   successToResponse:"Results in response section",
   waitingForQueryResult:"Waiting for query result",
+  docsLoading: "Docs loading",
 };
 
 export const Ru = {
@@ -82,4 +83,5 @@ export const Ru = {
   successQuery: "Успешный запрос",
   successToResponse:"Результаты в разделе ответа",
   waitingForQueryResult:"Ожидание результата запроса",
+  docsLoading: "Загрузка документации",
 };

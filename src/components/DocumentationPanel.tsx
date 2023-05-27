@@ -1,6 +1,15 @@
 import JsonView from "react18-json-view";
 import "react18-json-view/src/style.css";
+
 import { fetchDataSuspense } from "../api/rickAndMorty";
+
+// import { getIntrospectionQuery, buildClientSchema } from "graphql";
+// import {
+//   GraphQLNamedType,
+//   GraphQLScalarType,
+//   GraphQLObjectType,
+//   __Field,
+// } from "graphql/type";
 
 const response = fetchDataSuspense();
 

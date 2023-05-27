@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import { useTranslation } from "react-i18next";
 
 import { Button, Avatar } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
-import { currentTime } from "../utils";
+import { notifySuccess } from "../utils";
+
 import LocaleSwitcher from "../components/LocaleSwitcher";
 
 import ProjectSVG from "../assets/logo.svg";
@@ -14,10 +14,8 @@ import "./Header.css";
 
 export default function HeaderApp() {
   const { t } = useTranslation();
-
   const navigate = useNavigate();
   const location = useLocation();
-
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
 
@@ -28,12 +26,7 @@ export default function HeaderApp() {
   const onClickSignOut = () => {
     const logoutUser = user?.email;
     auth.signOut().then(() => {
-      notifications.show({
-        title: t("userLogout"),
-        message: currentTime() + " - " + logoutUser,
-        autoClose: true,
-        color: "green",
-      });
+      notifySuccess("userLogout", "" + logoutUser);
       navigate("/auth");
     });
   };
@@ -48,24 +41,23 @@ export default function HeaderApp() {
 
   const noAuthUser = !user && !loading;
 
+  const [isSticky, setIsSticky] = useState(false);
+
   useEffect(() => {
-    window.addEventListener("scroll", isSticky);
+    window.addEventListener("scroll", isStickyHandler);
     return () => {
-      window.removeEventListener("scroll", isSticky);
+      window.removeEventListener("scroll", isStickyHandler);
     };
   });
 
-  const isSticky = () => {
-    const header = document.querySelector(".header_app");
+  const isStickyHandler = () => {
     const scrollTop = window.scrollY;
-    scrollTop > 15
-      ? header?.classList.add("is-sticky")
-      : header?.classList.remove("is-sticky");
+    scrollTop > 0 ? setIsSticky(true) : setIsSticky(false);
   };
 
   return (
     <>
-      <header className="header_app">
+      <header className={`header_app ${isSticky ? "is-sticky" : ""}`}>
         <h2>
           <img className="header_logo" src={ProjectSVG} alt="Project logo" />
           GraphiQL - {t("team")} #6
