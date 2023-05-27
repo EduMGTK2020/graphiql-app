@@ -29,7 +29,7 @@
   .footer_app {
     flex-direction: column;
     height: auto;
-    min-height: 120px;
+    min-height: 150px;
     background-color: 0.5;
   }
 }

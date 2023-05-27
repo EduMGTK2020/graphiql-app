@@ -8,5 +8,8 @@
   .page_layout {
     height: auto;
   }
+  .main {
+    row-gap: 15px;
+  }
 }
 
