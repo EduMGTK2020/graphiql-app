@@ -11,6 +11,35 @@
     flex-grow: 1;
 }
 
-.docs_item:hover {
-    background-color:  #228be609;
+/* .docs_item:hover {
+    background-color: #228be609;
+} */
+
+
+.queryBox {
+    border-top: 1px solid lightgray;
+    padding: 1rem;
+}
+
+.queryName {
+    font-weight: 600;
+ }
+
+.queryDescription {
+    color: #808080;
+}
+
+.argName {
+    padding-left: 2rem;
+    /* color: #f08080; */
+}
+
+.argType, .returnType {
+    padding-left: 0.3rem;
+    color: #FF6600;
+}
+
+.argType:hover, .returnType:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
