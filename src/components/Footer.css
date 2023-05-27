@@ -25,11 +25,19 @@
   color: #1c7ed6;
 }
 
-@media screen and (max-width: 460px) {
-
+@media screen and (max-width: 950px) {
   .footer_app {
     flex-direction: column;
-    height: unset;
+    height: auto;
+    min-height: 120px;
+    background-color: 0.5;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .footer_app {
+    flex-direction: column;
+    height: auto;
     background-color: 0.5;
   }
   .footer_githubs a {

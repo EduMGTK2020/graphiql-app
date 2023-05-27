@@ -3,3 +3,10 @@
   flex-direction: column;
   height: 100vh;
 }
+
+@media (max-width: 920px) {
+  .page_layout {
+    height: auto;
+  }
+}
+

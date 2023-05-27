@@ -14,6 +14,7 @@
   right: 0;
   backdrop-filter: blur(10px);
   animation: slideDown 0.35s ease-out;
+  z-index: 1;
 }
 
 .header_logo {
@@ -48,6 +49,13 @@
   margin-right: 0;
 }
 
+@media screen and (max-width: 750px) {
+  .header_app h2,
+  .header_user div {
+    font-size: medium;
+  }
+}
+
 @media screen and (max-width: 580px) {
   .header_app {
     flex-direction: column;
@@ -70,8 +78,3 @@
   }
 }
 
-@media (max-width: 470px) {
-  .header_app h2 {
-    font-size: medium;
-  }
-}

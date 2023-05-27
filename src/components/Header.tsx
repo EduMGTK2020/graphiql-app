@@ -49,15 +49,13 @@ export default function HeaderApp() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
-      setIsSticky(currentScroll > 0.1);
+      setIsSticky(currentScroll > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("touchmove", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("touchmove", handleScroll);
     };
   }, []);
 
