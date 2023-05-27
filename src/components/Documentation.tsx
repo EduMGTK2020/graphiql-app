@@ -1,9 +1,8 @@
-import { Suspense } from "react";
-
+import { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-
 import Loader from "../components/Loader";
-import DocumentationPanel from "../components/DocumentationPanel";
+
+const DocumentationPanel = lazy(() => import("./DocumentationPanel"));
 
 import "./Documentation.css";
 
