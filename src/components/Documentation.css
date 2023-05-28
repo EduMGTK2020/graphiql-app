@@ -11,11 +11,6 @@
     flex-grow: 1;
 }
 
-/* .docs_item:hover {
-    background-color: #228be609;
-} */
-
-
 .queryBox {
     border-top: 1px solid lightgray;
     padding: 1rem;
