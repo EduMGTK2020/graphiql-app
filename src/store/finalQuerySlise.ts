@@ -3,17 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const finalQuerySlice = createSlice({
   name: "finalQuery",
   initialState: {
-    value: `query {
-        characters{results{status}
-          results{
-            name
-          }
-        }
-        }`,
+    value: "",
   },
   reducers: {
     addFinalQuery(state, action) {
-      state.value = action.payload;
+      //disable "cache" :)
+      if(state.value.startsWith(" "))
+        state.value = action.payload;
+      else {
+        state.value = " "+ action.payload;
+      }  
     },
   },
 });

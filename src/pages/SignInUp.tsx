@@ -1,6 +1,6 @@
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
-import { currentTime } from "../utils";
+import { notifySuccess, notifyError } from "../utils";
 import Loader from "../components/Loader";
 
 import {
@@ -22,7 +22,6 @@ import "./SignInUp.css";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslation } from "react-i18next";
-import { e } from "../auth/firebaseErrorTrans";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -39,20 +38,10 @@ export default function SignInUp() {
     if (isFormValid()) {
       signInWithEmailAndPassword(auth, form.values.email, form.values.password)
         .then((userCredential) => {
-          notifications.show({
-            title: t("userLogin"),
-            message: currentTime() + " - " + userCredential.user.email,
-            autoClose: true,
-            color: "green",
-          });
+          notifySuccess("userLogin", "" + userCredential.user.email);
         })
         .catch((error) => {
-          notifications.show({
-            title: t("errorFirebaseAuth"),
-            message: currentTime() + " - " + e(error.code),
-            autoClose: 20000,
-            color: "red",
-          });
+          notifyError("errorFirebaseAuth", error.code);
         });
     }
   };
@@ -70,20 +59,10 @@ export default function SignInUp() {
         form.values.password
       )
         .then((userCredential) => {
-          notifications.show({
-            title: t("userCreate"),
-            message: currentTime() + " - " + userCredential.user.email,
-            autoClose: true,
-            color: "green",
-          });
+          notifySuccess("userCreate", "" + userCredential.user.email);
         })
         .catch((error) => {
-          notifications.show({
-            title: t("errorFirebaseAuth"),
-            message:  currentTime() + " - " + e(error.code),
-            autoClose: 20000,
-            color: "red",
-          });
+          notifyError("errorFirebaseAuth", error.code);
         });
     }
   };
@@ -110,9 +89,7 @@ export default function SignInUp() {
   });
 
   if (user && loading) {
-    return (
-      <Loader>{t("checkAuth")}</Loader>
-    );
+    return <Loader>{t("checkAuth")}</Loader>;
   }
 
   return (
@@ -122,12 +99,12 @@ export default function SignInUp() {
           <Flex direction="column">
             <TextInput
               label={t("labelEmail")}
-              placeholder={''+t("labelEmail")}
+              placeholder={"" + t("labelEmail")}
               {...form.getInputProps("email")}
             />
             <PasswordInput
               label={t("labelPassword")}
-              placeholder={''+t("labelPassword")}
+              placeholder={"" + t("labelPassword")}
               {...form.getInputProps("password")}
             />
           </Flex>

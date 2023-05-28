@@ -14,13 +14,6 @@ function AccordionFunction() {
   return (
     <>
       <textarea
-        defaultValue={`query {
-        characters{results{status}
-          results{
-            name
-          }
-        }
-        }`}
         className="textarea_query "
         onChange={(e) => dispatch(addQuery(`${e.target.value}`))}
       ></textarea>
@@ -38,19 +31,9 @@ function AccordionFunction() {
             ></textarea>{" "}
           </Accordion.Panel>
         </Accordion.Item>
-
-        {/* <Accordion.Item value="flexibility">
-        <Accordion.Control>
-          <b>Headers</b>
-        </Accordion.Control>
-        <Accordion.Panel>
-          <textarea className="textarea"></textarea>
-        </Accordion.Panel>
-      </Accordion.Item> */}
       </Accordion>
     </>
   );
 }
 
 export default AccordionFunction;
-

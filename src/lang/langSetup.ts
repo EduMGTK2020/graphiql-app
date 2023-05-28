@@ -1,9 +1,9 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import {Ru, En} from "./langTrans";
+import { Ru, En } from "./langTrans";
 
 i18next.use(initReactI18next).init({
-  lng: "en", 
+  lng: localStorage.getItem("locale") || "en",
   debug: false,
   resources: {
     en: {
@@ -14,3 +14,5 @@ i18next.use(initReactI18next).init({
     },
   },
 });
+
+export default i18next;

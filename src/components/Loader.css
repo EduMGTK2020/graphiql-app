@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
     margin: auto;
+    flex-grow: 1;
 }
 
 h4 {

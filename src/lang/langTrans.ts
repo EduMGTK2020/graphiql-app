@@ -1,6 +1,6 @@
 export const En = {
   team: "Team",
-  checkAuth: "Check auth...",
+  checkAuth: "Check auth",
   mainTitle: "Main page",
   mainInfo:
     "Section - editor, variables, headers (for query), documentation, response",
@@ -32,11 +32,19 @@ export const En = {
   titleQuery: "Query",
   titleResponse: "Response",
   titleVar: "Variables",
+  errorQuery: "Query error",
+  errorEmptyQuery: "Empty query",
+  errorsToResponse: "Errors message in response section",
+  runButton: "Run",
+  successQuery: "Successful query",
+  successToResponse:"Results in response section",
+  waitingForQueryResult:"Waiting for query result",
+  docsLoading: "Docs loading",
 };
 
 export const Ru = {
   team: "Команда",
-  checkAuth: "Проверка авторизации...",
+  checkAuth: "Проверка авторизации",
   mainTitle: "Главная страница",
   mainInfo:
     "Секции - редактор, переменные, заголовки (для запроса), документация, ответ",
@@ -44,7 +52,7 @@ export const Ru = {
   welcomeInfo: "Разработчики, проект, курс",
   welcomeTeam: "Наша команда на курсе React-2023-Q1",
   welcomeDevs: "Эдуард Небольсин,Юрий Шпаковский,Фарход Кодиров",
-  goMain: "Перейти на Главную страницу",
+  goMain: "На Главную страницу",
   goWelcome: "Перейти на страницу приветствия",
   labelSignIn: "Вход",
   labelSignUp: "Регистрация",
@@ -68,4 +76,12 @@ export const Ru = {
   titleQuery: "Запрос",
   titleResponse: "Ответ",
   titleVar: "Переменные",
+  errorQuery: "Ошибка запроса",
+  errorEmptyQuery: "Пустой текст запроса",
+  errorsToResponse: "Сообщение об ошибке в разделе ответа",
+  runButton: "Выполнить",
+  successQuery: "Успешный запрос",
+  successToResponse:"Результаты в разделе ответа",
+  waitingForQueryResult:"Ожидание результата запроса",
+  docsLoading: "Загрузка документации",
 };

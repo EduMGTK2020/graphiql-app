@@ -13,16 +13,9 @@ import Response from "../components/Response";
 
 import "../pages/Main.css";
 
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
-
 export default function Main() {
-  const query = useSelector((state: RootState) => state.finalQuery.value);
-  const variables = useSelector(
-    (state: RootState) => state.finalVariables.value
-  );
-
   const { t } = useTranslation();
+  localStorage.setItem("typeStack", "");
 
   const navigate = useNavigate();
   const auth = getAuth();
@@ -59,10 +52,9 @@ export default function Main() {
           <div className="main_header">
             <div className="main_title">{t("titleResponse")}</div>
           </div>
-          <Response query={query} variables={JSON.parse(variables)} />
+          <Response />
         </div>
       </div>
     </>
   );
 }
-

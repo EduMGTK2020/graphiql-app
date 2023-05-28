@@ -11,6 +11,63 @@
     flex-grow: 1;
 }
 
-.docs_item:hover {
-    background-color:  #228be609;
+/* .docs_item:hover {
+    background-color: #228be609;
+} */
+
+
+.queryBox {
+    border-top: 1px solid lightgray;
+    padding: 1rem;
+}
+
+.queryName {
+    font-weight: 600;
+}
+
+.queryDescription {
+    color: #808080;
+}
+
+.paramDescription {
+    padding-bottom: 1rem;
+}
+
+.argName {
+    padding-left: 1rem;
+}
+
+.paramDescription {
+    padding-left: 1rem;
+    color: #808080;
+}
+
+.typeName {
+    font-weight: 600;
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.viewType {
+    padding: 1rem;
+}
+
+.linkType {
+    padding-left: 0.3rem;
+    color: #FF6600;
+}
+
+.linkType:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.linkBack {
+    color: #808080;
+    cursor: pointer;
+}
+
+.backArrow {
+    font-size: 1.2rem;
+    padding-right: 0.5rem;
 }

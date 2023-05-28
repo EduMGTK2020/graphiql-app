@@ -18,14 +18,23 @@
 .footer_githubs>a{
   color: black;
   text-decoration: none;
+  padding-left: 0.5rem;
 }
 .footer_githubs>a:hover{
   color: #1c7ed6;
 }
 
-@media screen and (max-width: 460px) {
+.footer_githubs {
+  display: unset;
+}
+
+@media screen and (max-width: 580px) {
     .footer_app {
         flex-direction: column;
         height: unset;
+    }
+    .footer_githubs{
+      display: flex;
+      flex-direction: column;
     }
 }

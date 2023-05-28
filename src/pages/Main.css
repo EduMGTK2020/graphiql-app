@@ -56,9 +56,23 @@ textarea {
     flex-direction: column;
 }
 
+.textarea_query {
+    flex-grow: 1;
+}
+
 @media screen and (max-width: 920px) {
     .main {
         flex-direction: column;
         padding: 0.3rem 0.5rem  ;
     }
 }
+
+@media screen and (max-width: 580px) {
+    .main_docs, .main_request, .main_response {
+        min-height: 20rem;
+    }
+    .main {
+        margin-top: 1rem;
+    }
+}
+
