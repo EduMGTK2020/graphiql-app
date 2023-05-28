@@ -39,7 +39,6 @@ addError(
   "API-ключ недействителен или отсутствует"
 );
 
-// fetch error
 addError(
   "Failed to fetch",
   "Failed to fetch",
