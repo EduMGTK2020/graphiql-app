@@ -23,23 +23,51 @@
 
 .queryName {
     font-weight: 600;
- }
+}
 
 .queryDescription {
     color: #808080;
 }
 
-.argName {
-    padding-left: 2rem;
-    /* color: #f08080; */
+.paramDescription {
+    padding-bottom: 1rem;
 }
 
-.argType, .returnType {
+.argName {
+    padding-left: 1rem;
+}
+
+.paramDescription {
+    padding-left: 1rem;
+    color: #808080;
+}
+
+.typeName {
+    font-weight: 600;
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.viewType {
+    padding: 1rem;
+}
+
+.linkType {
     padding-left: 0.3rem;
     color: #FF6600;
 }
 
-.argType:hover, .returnType:hover {
+.linkType:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.linkBack {
+    color: #808080;
+    cursor: pointer;
+}
+
+.backArrow {
+    font-size: 1.2rem;
+    padding-right: 0.5rem;
 }

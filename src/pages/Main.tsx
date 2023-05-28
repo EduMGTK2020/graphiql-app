@@ -15,6 +15,7 @@ import "../pages/Main.css";
 
 export default function Main() {
   const { t } = useTranslation();
+  localStorage.setItem("typeStack", "");
 
   const navigate = useNavigate();
   const auth = getAuth();

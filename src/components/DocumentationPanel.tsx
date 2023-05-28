@@ -1,5 +1,4 @@
 import { useState } from "react";
-import JsonView from "react18-json-view";
 import "react18-json-view/src/style.css";
 import { v4 as uuid } from "uuid";
 
@@ -9,10 +8,15 @@ import { buildClientSchema } from "graphql";
 import {
   GraphQLScalarType,
   GraphQLObjectType,
-  __Field,
   GraphQLSchema,
 } from "graphql/type";
 import Query from "./QueryField";
+
+interface Field {
+  name: string;
+  description: string;
+  type: string;
+}
 
 interface Arg {
   name: string;
@@ -30,8 +34,13 @@ interface Query {
 interface Type {
   name: string;
   description: string;
-  _fields?: Arg[] ;
-  // type: GraphQLObjectType;
+  _fields?: Arg[];
+}
+
+interface TypeView {
+  name: string;
+  description: string;
+  fields: Field[];
 }
 
 const response = fetchDataSuspense();
@@ -48,104 +57,135 @@ const getViewData = (schema: GraphQLSchema) => {
     });
   });
   const varTypes = schema.getTypeMap();
-  console.log(varTypes);
   Object.values(varTypes).forEach((t) => {
-    const type = t as Type ;
-
+    const type = t as Type;
+    const _fields = type["_fields"] as Arg[];
+    const fields: Field[] = [];
+    if (_fields) {
+      Object.values(_fields).map((f) => {
+        fields.push({
+          name: f["name"],
+          description: f["description"],
+          type: f.type.toString(),
+        });
+      });
+    }
     types.set(type["name"], {
       name: type["name"],
       description: type["description"],
-      _fields: type["_fields"] as Arg[],
+      fields: fields,
     });
   });
+};
 
-  console.log(types);
+const getViewType = (val: string) => {
+  return val
+    .replace("!", "")
+    .replace("[", "")
+    .replace("]", "")
+    .replace("!", "");
+};
+
+const getViewStack = (stack: string) => {
+  const items = stack.split(";");
+  if (items.length > 1) {
+    return [items[items.length - 2], items[items.length - 1]];
+  }
+  return ["", ""];
 };
 
 const queries: Query[] = [];
-const types: Map<string, Type> = new Map<string, Type>();
+const types: Map<string, TypeView> = new Map<string, TypeView>();
 
 export default function DocumentationPanel() {
-  const [type, setType] = useState<Type>();
+  const [typeStack, setTypeStack] = useState(
+    localStorage.getItem("typeStack") || "Query"
+  );
 
   const data = response.read();
-
   const schema = buildClientSchema(data["data"]);
-
   getViewData(schema);
 
-  const onClickType = (e: string) => {
-    console.log("onClickQueryName", e.replace(/[!\[\]]/g, ""));
-    const eType = types.get(e.replace(/[!\[\]]/g, ""));
-    // if(!eType?._fields) eType?._fields = []; 
-    setType(eType);
+  const [backTo, current] = getViewStack(typeStack);
+  const type = types.get(current);
+
+  const onClickType = (type: string) => {
+    const newItems = typeStack + ";" + getViewType(type);
+    setTypeStack(newItems);
+    localStorage.setItem("typeStack", newItems);
+  };
+
+  const onClickBack = () => {
+    const items = typeStack.split(";");
+    if (items.length > 1) {
+      items.splice(-1);
+      const newItems = items.join(";");
+      setTypeStack(newItems);
+      localStorage.setItem("typeStack", newItems);
+    }
   };
 
   return (
     <>
       <div className="docs_container">
         <div className="docs_item">
-          {/* ------ */}
-          <div className="viewType">
-            <div className="className">{type?.name}</div>
-            <div className="className">{type?.description}</div>
-
-            {/* {(() => {
-              if (type?._fields) {
-                var t = type?._fields as Arg[];
-                console.log(
-                  "dfgsdgfd",
-                  Object.values(t).map((f) => f.name )
-                );
-              }
-            })()} */}
-
-            {/* {type?._fields && type?._fields!.map((arg) => (
-              <div key={uuid()}>
-                <span className="argName">{arg.name}</span>:
-                <span
-                  className="argType"
-                  onClick={() => onClickType(arg.type.toString())}
-                >
-                  {" "}
-                  {arg.type.toString()}{" "}
-                </span>
+          {backTo && (
+            <div className="viewType">
+              <div className="linkBack" onClick={onClickBack}>
+                <span className="backArrow">&larr;</span>Back to {backTo}
               </div>
-            ))} */}
-          </div>
-          {/* ------ */}
-
-          <h3>Query</h3>
-          {queries.map((val) => (
-            <div className="queryBox" key={uuid()}>
-              <div className="queryDescription">{val.description}</div>
-
-              <div>
-                <span className="queryName">{val.name}</span> (
-              </div>
-              {val.args.map((arg) => (
+              <div className="typeName">{type?.name}</div>
+              <div className="typeDescription">{type?.description}</div>
+              {type?.fields.map((f) => (
                 <div key={uuid()}>
-                  <span className="argName">{arg.name}</span>:
+                  <span className="fieldName">{f.name}</span>:
                   <span
-                    className="argType"
-                    onClick={() => onClickType(arg.type.toString())}
+                    className="linkType"
+                    onClick={() => onClickType(f.type)}
                   >
-                    {" "}
-                    {arg.type.toString()}{" "}
+                    {f.type}
                   </span>
+                  <div className="paramDescription">{f.description}</div>
                 </div>
               ))}
-              <div>
-                ):{" "}
-                <span
-                  className="returnType"
-                  onClick={() => onClickType(val.type.toString())}
-                >
-                  {val.type.toString()}
-                </span>
-              </div>
             </div>
-          ))}
+          )}
+
+          {!backTo && (
+            <>
+              <h3>Query</h3>
+              {queries.map((val) => (
+                <div className="queryBox" key={uuid()}>
+                  <div className="queryDescription">{val.description}</div>
+
+                  <div>
+                    <span className="queryName">{val.name}</span> (
+                  </div>
+                  {val.args.map((arg) => (
+                    <div key={uuid()}>
+                      <span className="argName">{arg.name}</span>:
+                      <span
+                        className="linkType"
+                        onClick={() => onClickType(arg.type.toString())}
+                      >
+                        {" "}
+                        {arg.type.toString()}{" "}
+                      </span>
+                    </div>
+                  ))}
+                  <div>
+                    ):{" "}
+                    <span
+                      className="linkType"
+                      onClick={() => onClickType(val.type.toString())}
+                    >
+                      {val.type.toString()}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </>

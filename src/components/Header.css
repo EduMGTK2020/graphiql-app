@@ -71,6 +71,10 @@
         flex-direction: column;
     }
 
+    .header_group {
+        display: flex;
+    }
+
 }
 
 @media screen and (max-width: 915px) {

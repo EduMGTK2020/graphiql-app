@@ -18,3 +18,12 @@
     flex-direction: column;
   }
 }
+
+.welcome>h1 {
+  text-align: center;
+}
+
+.welcome>h2 {
+  text-align: center;
+  padding: 0 1rem;
+}
