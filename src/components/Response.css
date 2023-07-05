@@ -1,0 +1,17 @@
+.res_container {
+    overflow: hidden scroll;
+    flex-grow: 1;
+    height: 100px;
+    padding: 1rem;
+}
+
+.res_item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.res_container:hover {
+    background-color: #228be609;
+}

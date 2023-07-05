@@ -1,0 +1,29 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+.welcome_devs{
+  display: flex;
+  gap: 50px;
+}
+.dev{
+  text-align: center;
+}
+
+@media screen and (max-width: 580px) {
+  .welcome_devs {
+    flex-direction: column;
+  }
+}
+
+.welcome>h1 {
+  text-align: center;
+}
+
+.welcome>h2 {
+  text-align: center;
+  padding: 0 1rem;
+}

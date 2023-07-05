@@ -1,0 +1,14 @@
+.sign_in_up {
+    display: flex;
+    height: 100vh;
+    place-items: center;
+    justify-content: center;
+}
+
+.sign_in_up_inputs {
+    width: 18rem;
+}
+
+.sign_in_up_button {
+    width: 9rem;
+}

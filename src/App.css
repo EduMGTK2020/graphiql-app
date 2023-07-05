@@ -1,0 +1,11 @@
+.page_layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+@media screen and (max-width: 580px) {
+  .page_layout {
+    height: unset;
+  }
+}

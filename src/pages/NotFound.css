@@ -1,0 +1,7 @@
+.not_found {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
