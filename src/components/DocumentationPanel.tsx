@@ -98,6 +98,10 @@ const queries: Query[] = [];
 const types: Map<string, TypeView> = new Map<string, TypeView>();
 
 export default function DocumentationPanel() {
+
+  queries.length = 0;
+  types.clear();
+
   const [typeStack, setTypeStack] = useState(
     localStorage.getItem("typeStack") || "Query"
   );
